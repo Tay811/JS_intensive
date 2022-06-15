@@ -5,7 +5,7 @@ button_01.onclick = function reckoning() {
     firstNum = +prompt('Введите первое число');
     secondNum = +prompt('Введите второе число');
      if ( isNaN(firstNum) || isNaN(secondNum)) {
-        return console.log('Некорректный ввод');
+        return console.log('Некорректный ввод!');
      }
      if (secondNum === 2){
         let result = firstNum.toString(2);
@@ -29,7 +29,7 @@ button_01.onclick = function reckoning() {
         return console.log (result); 
     }
     else {
-        return console.log('Некорректный ввод');
+        return console.log('Некорректный ввод!');
     }
     }
     
@@ -42,17 +42,16 @@ button_02.onclick = function result() {
         
     firstNum = +prompt('Введите первое число');
     if ( isNaN(firstNum)) {
-        return console.log('Некорректный ввод');
+        return console.log('Некорректный ввод!');
         }
     else (secondNum = +prompt('Введите второе число'));
     if ( isNaN(secondNum)) {
-        return console.log('Некорректный ввод');    
+        return console.log('Некорректный ввод!');    
          }
     else {
         sum = firstNum + secondNum;
         quo = firstNum / secondNum;
-        return console.log([sum + ', ' + quo]);
+        return console.log('Ответ: '+ sum + ', ' + quo);
     };
-    
     }
         
