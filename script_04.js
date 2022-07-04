@@ -1,21 +1,22 @@
 //1
 
-function concatStrings (argument, separator) {
-    return (nextArgument) => {
-        if (argument === 'string' && separator === 'string'){
-            return res = argument.concat(separator);
-        }
-        if (argument !== 'string' && separator === 'string'){
-            return res = separator;
-        }
-        if (argument === 'string' && separator !== 'string'){
-            return res = argument;
-        }
-        if (argument !== 'string' && separator !== 'string'){
-            return res = '';
-        }
-    }
-}
+ const concatStrings = (fn, seed) => {
+  
+  const next = (...args) => {
+    return x => {
+      if (typeof x !== 'string') {
+        return args.reduce((acc, a, seed) => {
+          return fn.call(fn, acc, a, seed)
+        }, seed);
+      }
+      return next(...args, x, seed);
+    };
+  };
+  return next();
+  
+};
+
+const iSum = concatStrings((x, y) => x + y, '');
 
 // 2
 
