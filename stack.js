@@ -3,7 +3,7 @@ class Stack {
         this.maxSize = maxSize;
         this.length = 0;
         this.stack = [];
-        if (typeof maxSize !== 'number') {
+        if (typeof maxSize !== 'number' || maxSize < 0 || !isFinite(maxSize) || isNaN(maxSize)) {
             throw new Error('Аргумент должен быть числом!');
         } 
     }
@@ -13,9 +13,8 @@ class Stack {
         if (this.stack.length >= this.maxSize){
             throw new Error ('Стек переполнен!');
         }
-        this.length++;
+        this.length +=1;
         this.stack[this.length] = item;
-        return item;
     }
 
     pop() { 
@@ -33,7 +32,7 @@ class Stack {
         if (this.stack.length === 0){
             return null;
             }
-        return this.stack[this.length - (this.length - 1)];    
+        return this.stack[this.length - 1];    
     } 
 
     isEmpty() {
@@ -49,15 +48,14 @@ class Stack {
     }
 
     static fromIterable(iterable) {
-        if (typeof iterable[Symbol.iterator] !== 'function') {
-          throw new Error('Ошибка итерации!');
-        }
-        let newStack = new Stack(iterable.length);
-        for (let item of iterable) {
-          newStack.push(item);
-        }
-        return newStack;
-    }
+        if(!iterable[Symbol.iterator]) {
+        throw new Error('Ошибка итерации!')
+        } 
+        const stack = new Stack();
+        for(const item of iterable) stack.push(item);
+        stack.maxItemsCount = iterable.length;
+        return stack; 
+  }
 }
 
 module.exports = { Stack };
