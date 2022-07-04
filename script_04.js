@@ -46,7 +46,7 @@ class Calculator {
         if (typeof a == 'bigint'){
             throw new Error ('Ошибка!');
         }
-         if ( isNaN(a) || !isFinite(a) || typeof a == 'string') {
+         if ( isNaN(a) || !isFinite(a) || typeof a == 'string' || typeof a =='boolean' || a == null) {
             throw new Error ('Первый аргумент не ЧИСЛО!');
         }       
     }; 
@@ -55,7 +55,7 @@ class Calculator {
         if (typeof b == 'bigint'){
             throw new Error ('Ошибка!');
         }
-        if ( isNaN(b) || !isFinite(b) || typeof b == 'string') {
+        if ( isNaN(b) || !isFinite(b) || typeof b == 'string' || typeof b =='boolean' || b == null) {
             throw new Error ('Второй аргумент не ЧИСЛО!');
         }      
     };  
